@@ -9,10 +9,10 @@ export default function NoProjectSelected({ onStartAddingProject }) {
         src={noProjectImage}
         alt="An empty task list"
       />
-      <h2 className="text-xl font-bold text-zinc-500 my-4">
+      <h2 className="text-xl font-bold text-zinc-600 my-4">
         No Project Selected
       </h2>
-      <p className="text-zinc-400 mb-4">
+      <p className="text-zinc-500 mb-4">
         Select a project or get started with a new one!
       </p>
       <p className="mt08">
