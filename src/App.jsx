@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Sidebar from "./components/Sidebar";
 import uuid from "react-uuid";
 import NoProjectSelected from "./components/NoProjectSelected";
@@ -11,6 +11,21 @@ function App() {
     selectedProjectID: undefined,
     projects: [],
     tasks: [],
+  });
+
+  // store data in local storage
+  useEffect(() => {
+    const data = localStorage.getItem("Projects");
+    if (data !== null) setProjectsState(JSON.parse(data));
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("Projects", JSON.stringify(projectsState));
+  }, [projectsState]);
+  // local storage data
+  const [data, setData] = useState(() => {
+    const saved = localStorage.getItem("Projects");
+    const initialValue = JSON.parse(saved);
+    return initialValue || "";
   });
 
   // add task
@@ -122,6 +137,7 @@ function App() {
       <NoProjectSelected onStartAddingProject={handleStartAddingProject} />
     );
   }
+
   return (
     <main className="h-screen my-8 flex gap-8">
       <Sidebar
