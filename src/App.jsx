@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Sidebar from "./components/Sidebar";
 import uuid from "react-uuid";
 import NoProjectSelected from "./components/NoProjectSelected";
@@ -28,9 +28,15 @@ function App() {
       };
     });
   }
-
   // delete task
-  function handleDeleteTask() {}
+  function handleDeleteTask(id) {
+    setProjectsState((prevState) => {
+      return {
+        ...prevState,
+        tasks: prevState.tasks.filter((task) => task.id !== id),
+      };
+    });
+  }
   // select project
   function handleSelectProject(id) {
     setProjectsState((prevState) => {
@@ -122,6 +128,7 @@ function App() {
         onStartAddingProject={handleStartAddingProject}
         projects={projectsState.projects}
         onSelectProject={handleSelectProject}
+        selectedProjectID={projectsState.selectedProjectID}
       />
       {content}
     </main>

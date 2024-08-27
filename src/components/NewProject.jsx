@@ -32,7 +32,7 @@ export default function NewProject({ onAdd, onCancel }) {
     <>
       <Modal buttonCaption="Close" ref={modal}>
         <h2 className="text-xl font-bold text-zinc-600 my-4">Invalid Input</h2>
-        <p className="text-zinc-600 mb-4">
+        <p className="text-red-700 mb-4">
           Please enter a valid Title, Description and/or Due Date.
         </p>
       </Modal>

@@ -1,7 +1,6 @@
 import NewTask from "./NewTask";
 
 export default function Tasks({ tasks, onAdd, onDelete }) {
-  console.log(tasks);
   return (
     <section className="">
       <h2 className="text-2xl font-bold text-zinc-700 mb-4 uppercase">Tasks</h2>
@@ -16,7 +15,10 @@ export default function Tasks({ tasks, onAdd, onDelete }) {
           {tasks.map((task) => (
             <li key={task.id} className="flex justify-between my-4">
               <span className="text-zinc-900 ">{task.text}</span>
-              <button className="text-zinc-900  hover:text-red-700">
+              <button
+                className="text-zinc-900  hover:text-red-700"
+                onClick={() => onDelete(task.id)}
+              >
                 Delete
               </button>
             </li>
